@@ -1,0 +1,48 @@
+1) Explain the purpose of tags and how to create and manage them.
+
+Tags in Git serve as a way to mark specific points in history as significant, such as release points or major milestones in development. They're often used to indicate version numbers or releases of software. Tags provide a stable reference point that doesn't change as new commits are added to the repository.
+
+To create and manage tags in Git:
+
+Creating Tags: Tags can be created using the git tag command followed by the tag name. For example, to create an annotated tag for a version 1.0 release, you would run git tag -a v1.0 -m "Version 1.0 Release".
+
+Types of Tags:
+
+Annotated Tags: These are stored as full objects in the Git database and include metadata such as tagger name, email, date, and a tagging message.
+Lightweight Tags: These are simply pointers to specific commits.
+Managing Tags:
+
+Listing Tags: To list all tags in a repository, you can use git tag.
+Pushing Tags: Tags need to be explicitly pushed to a remote repository using git push --tags.
+Deleting Tags: Tags can be deleted locally with git tag -d <tagname>, and deleted tags can be removed from the remote repository by running git push origin --delete <tagname>.
+2) Discuss the concept of rebasing and its use cases.
+
+Rebasing is a Git operation that allows you to change the base of a branch onto a new commit. Instead of merging the changes from one branch into another, as with merging, rebasing rewrites the commit history to make it appear as if the work was based directly off the most recent commit in the branch you're rebasing onto.
+
+Some common use cases for rebasing include:
+
+Maintaining a Clean History: Rebasing can be used to maintain a linear and clean commit history by incorporating changes from one branch onto another without creating merge commits.
+Integration of Changes: Rebasing can be used to integrate changes from a main branch into a feature branch, keeping the feature branch up-to-date with the latest changes in the main branch.
+Squashing Commits: Rebasing allows for interactive rebase, where you can squash, edit, or reorder commits before finalizing the rebase. This can be useful for cleaning up commits before merging them into a main branch.
+3) Compare rebase with merging (hands-on activity)
+
+This hands-on activity involves comparing the use of rebase and merging in a practical scenario:
+
+Scenario: Assume you have a feature branch (feature) off of main branch. Meanwhile, there have been new commits made on the main branch.
+
+Using Merge:
+
+Checkout to the feature branch: git checkout feature
+Merge changes from the main branch: git merge main
+Resolve any merge conflicts, if applicable.
+Commit the merge.
+Using Rebase:
+
+Checkout to the feature branch: git checkout feature
+Rebase feature onto main: git rebase main
+Resolve any conflicts, if encountered.
+Continue the rebase process until all commits are reapplied on top of main.
+Comparison:
+
+Merge: Creates a merge commit, preserving the history of both branches. It doesn't alter the existing commits on the feature branch.
+Rebase: Rewrites commit history by placing the commits from the feature branch on top of the latest commit in the main branch. It results in a linear history without merge commits.
